@@ -356,9 +356,21 @@ These are required before an app is called finished:
 
 - Settings must include an easy **Backup** function.
 - Settings must include **Restore from Backup**.
-- Settings must include a clear **How to Use** section.
+- Settings must include a complete, easy-to-read **How to Use / README** inside the app. It must explain the parent setup, adding children, linking a child's device, creating and changing chores, notifications, ALL DONE, stars, rewards, backup and restore. The parent must not need to open an outside file or website to learn how the app works.
+- Every parent-controlled item must be editable from the protected Parent Settings area. Nothing belonging to the family account may be permanently hard-coded or locked to a default name.
+- The parent must be able to view and change the parent/family name, login email address and password.
+- The parent must be able to change the Parent PIN, including a safe PIN recovery or reset process.
+- The parent must be able to add, rename, edit and delete child profiles, including each child's name, avatar and colour.
+- The parent must be able to edit all chores, titles, icons, schedules, reminder delays, star values, rewards, messages and other family settings.
+- Sensitive account changes such as email, password, PIN or deleting the account must require confirmation and re-authentication where needed.
+- Settings must include Sign Out, Delete Account and Delete All Family Data controls with clear confirmation before anything is permanently removed.
 - Settings must include the normal app controls and information, including Delete All Data, Feedback, App Version and Privacy where applicable.
-- Settings must have the real Team LALLI61 footer displayed at the bottom of the page.
+- Settings must have the real footer displayed at the very bottom of the page using this wording:
+
+  - **I'M DONE! — Designed and created by Team LALLI61**
+  - **© 2026 Team LALLI61. All rights reserved.**
+
+- The footer must be part of the actual Settings screen, remain readable on phones and tablets, and must not be replaced with test, template or developer-tool wording.
 - The backup and restore functions must be tested on a real device, including after closing, reopening and reinstalling the test build where applicable.
 
 ## CURRENT TESTING AND RELEASE PATH
