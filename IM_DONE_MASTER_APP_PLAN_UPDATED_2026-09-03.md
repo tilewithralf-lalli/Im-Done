@@ -295,6 +295,7 @@ This is **one app installed on every device**, not two separate apps.
 - The parent creates one family login account.
 - The parent adds each child inside that account.
 - The parent app creates a family code or QR code for linking devices.
+- Parent Settings must show two separate family QR choices: **Android phone/tablet QR** opens the installed Android app; **iPad/iPhone QR** opens the Safari web app and carries the same six-number family code into the child-join screen.
 - The child installs the same app, chooses their child profile and enters the family code.
 - The parent area is protected by the parent PIN.
 - The child only sees the simple child screen and cannot change chores, stars or rewards.

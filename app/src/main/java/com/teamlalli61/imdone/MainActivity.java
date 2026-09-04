@@ -10,6 +10,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -52,6 +53,7 @@ public class MainActivity extends Activity {
     private WebView webView;
     private SharedPreferences prefs;
     private boolean polling;
+    private String pendingJoinCode = "";
 
     @SuppressLint({"SetJavaScriptEnabled", "JavascriptInterface"})
     @Override
@@ -61,8 +63,15 @@ public class MainActivity extends Activity {
         createNotificationChannel();
         requestNotificationPermission();
         requestCameraPermission();
+        readJoinIntent(getIntent());
         webView = new WebView(this);
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                openPendingJoin();
+            }
+        });
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onPermissionRequest(final PermissionRequest request) {
@@ -84,6 +93,32 @@ public class MainActivity extends Activity {
         webView.addJavascriptInterface(new Bridge(), "ImDone");
         setContentView(webView);
         webView.loadUrl("file:///android_asset/index.html");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        readJoinIntent(intent);
+        openPendingJoin();
+    }
+
+    private void readJoinIntent(Intent intent) {
+        if (intent == null) return;
+        Uri data = intent.getData();
+        if (data == null || !"imdone".equals(data.getScheme()) || !"join".equals(data.getHost()))
+            return;
+        String code = data.getQueryParameter("code");
+        if (code == null) return;
+        code = code.replaceAll("\\D", "");
+        if (code.length() == 6) pendingJoinCode = code;
+    }
+
+    private void openPendingJoin() {
+        if (webView == null || pendingJoinCode.isEmpty()) return;
+        String code = pendingJoinCode;
+        pendingJoinCode = "";
+        runJs("window.prefillFamilyCode(" + JSONObject.quote(code) + ")");
     }
 
     private void createNotificationChannel() {

@@ -1,10 +1,10 @@
 # I'M DONE! Android App
 
-This folder contains the full Android project. The signed installable file is delivered as `IM-DONE-HOME-FAMILY-v1.0.2.apk` alongside the source download.
+This folder contains the full Android project. The signed installable file is delivered as `IM-DONE-HOME-FAMILY-v1.0.3.apk` alongside the source download.
 
 ## Install on an Android phone or tablet
 
-1. Copy `IM-DONE-HOME-FAMILY-v1.0.2.apk` to the device.
+1. Copy `IM-DONE-HOME-FAMILY-v1.0.3.apk` to the device.
 2. Tap the APK and allow installation from that source when Android asks.
 3. Open I'M DONE!
 
@@ -39,7 +39,7 @@ Open this entire folder in Android Studio. The main kid and parent interface is 
 - One parent family account
 - Private 6-number family code for child devices
 - Child device linking without a child email
-- Parent family QR code and child QR scan option
+- Parent family QR join link that opens the child app and fills the family code automatically
 - Child device locked to the selected child profile
 - Live Firebase syncing for children, chores, stars, DONE status and rewards
 - Android chore-time notifications and working 5-minute snooze
