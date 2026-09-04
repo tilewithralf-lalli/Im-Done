@@ -39,10 +39,20 @@ Open this entire folder in Android Studio. The main kid and parent interface is 
 - One parent family account
 - Private 6-number family code for child devices
 - Child device linking without a child email
-- Parent family QR join link that opens the child app and fills the family code automatically
+- Separate Android and iPad/iPhone family QR codes; Android opens the app join route and iPad/iPhone opens the Safari family join page with the code included
 - Child device locked to the selected child profile
 - Live Firebase syncing for children, chores, stars, DONE status and rewards
 - Android chore-time notifications and working 5-minute snooze
 - Offline on-device saved copy with automatic cloud retry when the connection returns
 
 The app keeps a local copy on each device and securely syncs the family data through Firebase when connected.
+
+
+## Family QR codes
+
+On the parent Android device, open Parent Settings and tap **SHOW / HIDE FAMILY QR**.
+
+- Use **ANDROID QR** for an Android child's phone or tablet.
+- Use **iPAD / iPHONE QR** for an iPad or iPhone. Open the normal Camera app, point it at the QR code, and tap the banner to open the family join page in Safari.
+- Both QR codes use the same private family code and connect to the same family.
+- If QR scanning is unavailable, the child can enter the six-number family code manually.
