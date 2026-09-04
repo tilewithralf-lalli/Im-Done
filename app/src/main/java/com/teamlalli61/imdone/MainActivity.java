@@ -332,6 +332,68 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void updateAccountDetails(String familyName, String newEmail,
+                                         String currentPassword, String newPassword,
+                                         String currentState) {
+            io.execute(() -> {
+                try {
+                    String oldEmail = prefs.getString("email", "");
+                    if (oldEmail.isEmpty()) throw new Exception("Please sign in again.");
+                    if (currentPassword == null || currentPassword.length() < 6)
+                        throw new Exception("Enter the current password.");
+                    authenticate("signInWithPassword", oldEmail, currentPassword);
+
+                    JSONObject update = new JSONObject()
+                            .put("idToken", validToken())
+                            .put("returnSecureToken", true)
+                            .put("email", newEmail.trim());
+                    if (newPassword != null && !newPassword.isEmpty()) {
+                        if (newPassword.length() < 6)
+                            throw new Exception("New password needs at least 6 characters.");
+                        update.put("password", newPassword);
+                    }
+                    JSONObject response = postJson(
+                            "https://identitytoolkit.googleapis.com/v1/accounts:update?key="
+                                    + API_KEY, update, null);
+                    saveTokens(response);
+                    String savedEmail = response.optString("email", newEmail.trim());
+                    prefs.edit().putString("email", savedEmail).apply();
+
+                    String familyId = prefs.getString("familyId", "");
+                    JSONObject fields = new JSONObject()
+                            .put("familyEmail", stringField(savedEmail))
+                            .put("familyName", stringField(familyName.trim()))
+                            .put("state", stringField(currentState))
+                            .put("updatedAt", timestampField());
+                    patchJson("families/" + familyId, document(fields),
+                            "updateMask.fieldPaths=familyEmail&updateMask.fieldPaths=familyName"
+                                    + "&updateMask.fieldPaths=state&updateMask.fieldPaths=updatedAt");
+                    callJs("onAccountUpdated", savedEmail, familyName.trim());
+                } catch (Exception error) {
+                    callJs("onAccountUpdateError", friendlyError(error));
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void sendPasswordResetEmail() {
+            io.execute(() -> {
+                try {
+                    String email = prefs.getString("email", "");
+                    if (email.isEmpty()) throw new Exception("No account email is connected.");
+                    JSONObject body = new JSONObject()
+                            .put("requestType", "PASSWORD_RESET")
+                            .put("email", email);
+                    postJson("https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key="
+                            + API_KEY, body, null);
+                    callJs("onPasswordResetSent");
+                } catch (Exception error) {
+                    callJs("onAccountUpdateError", friendlyError(error));
+                }
+            });
+        }
+
+        @JavascriptInterface
         public void beginChildJoin(String familyCode) {
             io.execute(() -> {
                 String code = familyCode.replaceAll("\\D", "");

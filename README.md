@@ -1,10 +1,10 @@
 # I'M DONE! Android App
 
-This folder contains the full Android project. The signed installable file is delivered as `IM-DONE-HOME-FAMILY-v1.0.0.apk` alongside the source download.
+This folder contains the full Android project. The signed installable file is delivered as `IM-DONE-HOME-FAMILY-v1.0.1.apk` alongside the source download.
 
 ## Install on an Android phone or tablet
 
-1. Copy `IM-DONE-HOME-FAMILY-v1.0.0.apk` to the device.
+1. Copy `IM-DONE-HOME-FAMILY-v1.0.1.apk` to the device.
 2. Tap the APK and allow installation from that source when Android asks.
 3. Open I'M DONE!
 
@@ -29,6 +29,12 @@ Open this entire folder in Android Studio. The main kid and parent interface is 
 - ALL DONE and 5 MORE MINUTES buttons
 - Parent message, bonus stars, pause, reset, and undo
 - Parent PIN
+- Editable parent/family name, login email and password
+- Password-reset email from Parent Settings
+- Built-in How to Use guide
+- Backup and Restore controls
+- Feedback, Privacy, App Version and Delete All Data controls
+- Official Team LALLI61 Settings footer
 - Local saved data on the installed device
 - One parent family account
 - Private 6-number family code for child devices
