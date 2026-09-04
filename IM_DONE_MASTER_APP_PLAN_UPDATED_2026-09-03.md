@@ -199,22 +199,23 @@ The first working version should include:
 
 ---
 
-## 9. Possible Later Features
+## 9. Full-App Features — All Included
 
-These can be considered after the main app works properly:
+These are all part of the full I'M DONE! app. They are not being pushed into a later version:
 
 - Voice reminders using the parent's recorded voice
 - Family competitions or shared goals
-- Streaks for completing routines several days in a row
+- **Days in a Row** for completing routines several days in a row. Use this simple wording for children; do not call it “streaks” in the child app.
 - Bonus jobs that children can choose
 - School-day and holiday schedules
 - Different reminder sounds for each child
 - Photo proof for selected jobs
 - Weekly family progress report
-- Celebration animation when all jobs are finished
+- Happy jumping celebration character after chores are completed, with messages such as **“Great job! You did it!”**
 - Temporary pause for sickness, holidays or weekends away
+- Star-goal encouragement showing the child how close they are to play time, for example: **“Well done! You’re only 3 stars away from play time!”**
 
-These features must not make the main child screen complicated.
+The parent sets the play-time star target. The app encourages the child and counts down the remaining stars, while the parent still decides when play time is allowed. These features must not make the main child screen complicated.
 
 ---
 
@@ -274,6 +275,8 @@ Confirmed starter chores:
 - Keep all setup and control inside the protected parent area.
 - Add real scheduled notifications that work when the app is closed.
 - Preserve chores, stars, rewards and progress after the app is restarted.
+- **Must-have:** all app data must remain saved after closing and reopening the app, including family connection, profiles, chores, schedules, completed jobs, stars, rewards and settings.
+- Include the full-app features in Section 9, including **Days in a Row**, the jumping **Great job!** celebration, and star-goal encouragement toward play time.
 - **Confirmed choice:** Build for connected parent and child devices.
 - Mum or Dad controls chores, stars and rewards from the parent phone.
 - The parent can add and manage multiple children inside the one parent app.
@@ -285,4 +288,121 @@ Confirmed starter chores:
 - Completed chores sync back to the parent's dashboard.
 - Save development work through GitHub before moving to iOS work on the MacBook.
 
+### Confirmed Connected-App Explanation — 2 September 2026
+
+This is **one app installed on every device**, not two separate apps.
+
+- The parent creates one family login account.
+- The parent adds each child inside that account.
+- The parent app creates a family code or QR code for linking devices.
+- The child installs the same app, chooses their child profile and enters the family code.
+- The parent area is protected by the parent PIN.
+- The child only sees the simple child screen and cannot change chores, stars or rewards.
+- When the child presses **ALL DONE**, the completion is sent through the internet to the family account.
+- The parent's dashboard then shows the chore as **DONE**.
+- If the child's device is temporarily offline, the completion is saved and synchronised when internet returns.
+
+In simple terms:
+
+**One app + one parent family login + child profiles + connected devices.**
+
+The current prototype saves changes on the device being used. The connected family login, family code and parent/child syncing are required parts of the real app build and are not yet implemented in the prototype.
+
 **Team LALLI61**
+
+
+---
+
+## Confirmed Small Feature Upgrade — 3 September 2026
+
+Confirmed additions:
+- 5 MORE MINUTES — child may delay once when parent allows it; parent controls delay.
+- Streaks — simple consecutive-day encouragement.
+- Bonus Star — parent can instantly award extra stars.
+- Parent Quick Message — short message appears on child's screen.
+- Today's Progress — simple count such as 5 of 7 DONE.
+- Early DONE — completing early cancels the later reminder for that job.
+- Holiday / Away Pause — pause and resume routines without rebuilding schedules.
+- Weekly Parent Summary — jobs completed and stars earned, kept simple.
+- Reward Celebration — celebration when reward target is reached.
+- Parent Undo DONE — return a completed job to TO DO and correct stars/progress.
+
+### Permanent Team LALLI61 Build Check
+FEATURE → REQUIREMENTS → WHAT CAN GO WRONG → DONE WHEN → REAL-DEVICE TEST → PASS/FAIL → VERIFY ACTUAL RELEASE APK/AAB
+
+Before declaring an app finished, perform a final WHAT HAVE WE MISSED? review.
+
+---
+
+## STILL TO DO FIRST — CONNECTED FAMILY SYSTEM
+
+This is the first remaining build task before adding further features:
+
+1. Create one parent family account.
+2. Generate a private family code or QR code.
+3. Let each child's phone or iPad join the family using that code.
+4. Link each device to the correct child profile.
+5. Save the parent's chores and schedules online.
+6. Send those chores and reminders to the child's device.
+7. Send the child's **DONE** completion back to the parent's dashboard.
+8. Save completions while offline and synchronise them when internet returns.
+9. Make the data remain saved after closing and reopening the app.
+
+Only after this connected family system works do we add and test the real scheduled notifications on the closed app.
+
+## FINAL SMALL ITEMS — EVERY TEAM LALLI61 APP
+
+These are required before an app is called finished:
+
+- Settings must include an easy **Backup** function.
+- Settings must include **Restore from Backup**.
+- Settings must include a clear **How to Use** section.
+- Settings must include the normal app controls and information, including Delete All Data, Feedback, App Version and Privacy where applicable.
+- Settings must have the real Team LALLI61 footer displayed at the bottom of the page.
+- The backup and restore functions must be tested on a real device, including after closing, reopening and reinstalling the test build where applicable.
+
+## CURRENT TESTING AND RELEASE PATH
+
+The current I'M DONE build is a **home/family test APK**.
+
+Testing order:
+
+1. Install the APK on the family's real Android phones and tablets.
+2. Test the parent device, every child device, family linking, chores, reminders, DONE status, stars, rewards, backup, restore and Settings.
+3. Fix every problem found during the home/family test.
+4. Only when the family test passes, prepare the proper release build and publish the app through the appropriate store process.
+
+The home/family APK is not yet the final public release. It is the real-device test stage used to prove the app works properly for Team LALLI61 before release.
+
+## APP COSTS — CONFIRMED 3 SEPTEMBER 2026
+
+For the first Android family-testing and finalisation phase:
+
+- Google Play developer registration: **$0 extra** because the one-time developer fee has already been paid.
+- Firebase family login, online syncing and notifications: expected to be **$0 during the small family test**, using the free limits.
+- Existing app hosting: **$0 extra** while the existing project hosting is used.
+- Privacy policy: **$0** if created and hosted by Team LALLI61 without paying an outside service.
+- Android testing: **$0** using the family's existing phones and tablets.
+- Apple upload or Apple Developer membership: **not included yet**. No Apple upload happens during this first phase.
+
+The expected immediate cost to finish and test the Android version is:
+
+## **$0 EXTRA**
+
+The only possible later running cost is Firebase usage if the app grows beyond its free limits. This must be monitored before public release.
+
+## IOS TESTING — APPLE 7-DAY METHOD
+
+For the first iPhone and iPad family testing, use the MacBook with Xcode:
+
+- Connect the real iPhone or iPad to the MacBook.
+- Sign the development build with a free Apple Account using Apple's **Personal Team**.
+- Install the app directly from Xcode onto the connected device.
+- The development signing/provisioning works for **7 days**.
+- After 7 days, reconnect the device to the MacBook and press **Run** in Xcode to rebuild and reinstall it.
+
+The 7-day limit is not an I'M DONE app timer. It comes from Apple's free development signing. Later, the paid Apple Developer Program is needed for longer-term testing, TestFlight and App Store release without rebuilding every 7 days.
+
+## FINAL RELEASE RULE
+
+**Home/family test APK first. Proper release build only after real-device testing passes. Android and iOS testing must both be verified before calling the app ready for release.**

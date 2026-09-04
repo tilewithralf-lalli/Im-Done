@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function ownsFamily(familyId) {
+      return signedIn() && request.auth.uid == familyId;
+    }
+
+    function isFamilyMember(familyId) {
+      return signedIn()
+        && exists(/databases/$(database)/documents/families/$(familyId)/members/$(request.auth.uid));
+    }
+
+    match /familyCodes/{code} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.familyId == request.auth.uid;
+      allow update, delete: if signedIn() && resource.data.ownerUid == request.auth.uid;
+    }
+
+    match /families/{familyId} {
+      allow create: if ownsFamily(familyId)
+        && request.resource.data.ownerUid == request.auth.uid;
+      allow read, update: if ownsFamily(familyId) || isFamilyMember(familyId);
+      allow delete: if ownsFamily(familyId);
+
+      match /members/{memberId} {
+        allow read, update, delete: if ownsFamily(familyId)
+          || (signedIn() && request.auth.uid == memberId);
+        allow create: if signedIn()
+          && request.auth.uid == memberId
+          && request.resource.data.familyCode is string
+          && get(/databases/$(database)/documents/familyCodes/$(request.resource.data.familyCode)).data.familyId == familyId;
+      }
+    }
+  }
+}
