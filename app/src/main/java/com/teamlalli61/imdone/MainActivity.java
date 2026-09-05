@@ -111,6 +111,10 @@ public class MainActivity extends Activity {
 
 
 
+    private void installWelcomeClickFallback() {
+        runJs("(function(){var p=document.querySelector('.welcome-choice:nth-child(1)');var c=document.querySelector('.welcome-choice:nth-child(2)');if(p)p.onclick=function(){if(window.showParentLogin)window.showParentLogin();else{document.getElementById('welcomeChoices').style.display='none';document.getElementById('parentLogin').style.display='block';}};if(c)c.onclick=function(){if(window.showChildJoin)window.showChildJoin();else{document.getElementById('welcomeChoices').style.display='none';document.getElementById('childJoin').style.display='block';}};})()");
+    }
+
     private void readJoinIntent(Intent intent) {
         if (intent == null) return;
         Uri data = intent.getData();
